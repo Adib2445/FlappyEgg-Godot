@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprite/icon.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/MainWall.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 36.8848, 33.4789 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Upper" type="KinematicBody2D" parent="."]
+position = Vector2( -0.9514, -131.987 )
+scale = Vector2( 0.433783, 5.25704 )
+
+[node name="Sprite" type="Sprite" parent="Upper"]
+modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upper"]
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="Upper"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Upper/Area2D"]
+shape = SubResource( 1 )
+
+[node name="Lower" type="KinematicBody2D" parent="."]
+position = Vector2( 0, 360 )
+scale = Vector2( 0.433783, 5.25704 )
+
+[node name="Sprite" type="Sprite" parent="Lower"]
+modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lower"]
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="Lower"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Lower/Area2D"]
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

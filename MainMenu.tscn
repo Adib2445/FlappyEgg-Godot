@@ -1,0 +1,123 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/Button_Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://fonts/TItle_Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://fonts/MainMenu.gd" type="Script" id=3]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="MainTXT" type="Label" parent="."]
+margin_left = 232.0
+margin_top = 32.0
+margin_right = 802.0
+margin_bottom = 152.0
+custom_fonts/font = ExtResource( 2 )
+text = "FlapyEgg!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighScore" type="Label" parent="."]
+margin_left = 24.0
+margin_top = 184.0
+margin_right = 626.0
+margin_bottom = 304.0
+rect_scale = Vector2( 0.734095, 0.734095 )
+custom_fonts/font = ExtResource( 2 )
+text = "HighScore:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainHighScoreTXT" type="Label" parent="."]
+margin_left = 480.0
+margin_top = 184.0
+margin_right = 1050.0
+margin_bottom = 304.0
+custom_fonts/font = ExtResource( 2 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0.913725 )
+anchor_right = 0.278
+margin_left = 376.0
+margin_top = 320.0
+margin_right = 638.0
+margin_bottom = 446.0
+rect_scale = Vector2( 0.943567, 0.743568 )
+custom_fonts/font = ExtResource( 1 )
+text = "  Play   "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="quit" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0.913725 )
+anchor_right = 0.278
+margin_left = 376.0
+margin_top = 456.0
+margin_right = 638.0
+margin_bottom = 582.0
+rect_scale = Vector2( 0.951413, 0.743568 )
+custom_fonts/font = ExtResource( 1 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 8.0
+margin_top = 384.0
+margin_right = 48.0
+margin_bottom = 424.0
+rect_scale = Vector2( 8.79528, 4.80673 )
+color = Color( 0.270588, 0.545098, 0.764706, 0.309804 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="How TO Play" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 416.0
+margin_right = 676.0
+margin_bottom = 536.0
+rect_scale = Vector2( 0.504817, 0.504817 )
+custom_fonts/font = ExtResource( 2 )
+text = "How to Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="How TO Play2" type="Label" parent="How TO Play"]
+margin_left = 15.8473
+margin_top = 126.779
+margin_right = 675.847
+margin_bottom = 246.779
+rect_scale = Vector2( 0.504817, 0.504817 )
+custom_fonts/font = ExtResource( 2 )
+text = "- Hold Space to fly"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="How TO Play3" type="Label" parent="How TO Play"]
+margin_left = 15.8473
+margin_top = 206.015
+margin_right = 1210.85
+margin_bottom = 326.015
+rect_scale = Vector2( 0.504817, 0.504817 )
+custom_fonts/font = ExtResource( 2 )
+text = "- Avoid obstacle"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

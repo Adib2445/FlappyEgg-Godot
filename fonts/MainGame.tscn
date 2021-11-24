@@ -1,0 +1,130 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://prefab/BG.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://MainMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://BagroundMusic.tscn" type="PackedScene" id=4]
+[ext_resource path="res://BG_Spawwner.gd" type="Script" id=5]
+[ext_resource path="res://MainGame.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/WallSpawwner.gd" type="Script" id=7]
+[ext_resource path="res://fonts/Button_Font.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Sprite/icon.png" type="Texture" id=9]
+[ext_resource path="res://Sprite/parallax-mountain-mountains.png" type="Texture" id=10]
+[ext_resource path="res://Sprite/parallax-mountain-bg.png" type="Texture" id=11]
+[ext_resource path="res://SoundEffect/engine_takeoff.wav" type="AudioStream" id=12]
+[ext_resource path="res://Sprite/dannorder-monkey on mars-cc0.png" type="Texture" id=13]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Move"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1240, 304 ), Vector2( 1240, 80 ), Vector2( 1240, 304 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32.0946, 48 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 2400, 12.3828 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 84.8528, 329.512 )
+
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource( 12 )
+attenuation = 0.392292
+
+[node name="Sprite3" type="Sprite" parent="Player"]
+position = Vector2( -12.8528, -1.51199 )
+scale = Vector2( 2.33862, 2.33862 )
+texture = ExtResource( 13 )
+vframes = 5
+hframes = 11
+frame = 32
+
+[node name="WallSpawwner" type="Node2D" parent="."]
+position = Vector2( 1240, 304 )
+script = ExtResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WallSpawwner"]
+anims/Move = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 536, 0 )
+scale = Vector2( 17.75, 1 )
+texture = ExtResource( 9 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 552, 600 )
+scale = Vector2( 17.75, 1 )
+texture = ExtResource( 9 )
+
+[node name="BG_Spawwner" type="Node2D" parent="."]
+visible = false
+position = Vector2( 1256, 328 )
+script = ExtResource( 5 )
+
+[node name="Ground" type="Area2D" parent="."]
+position = Vector2( 592, 632 )
+scale = Vector2( 23.68, 1 )
+
+[node name="safdsf" type="CollisionShape2D" parent="Ground"]
+shape = SubResource( 2 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1163.46, 0 )
+
+[node name="Sprite3" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource( 1 )]
+position = Vector2( 528, 336 )
+scale = Vector2( 4.27772, 4.27772 )
+texture = ExtResource( 11 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_offset = Vector2( 100, 0 )
+motion_mirroring = Vector2( 2318, 0 )
+
+[node name="parallax-mountain-mountains" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 936, 256 )
+scale = Vector2( 4.27772, 4.27772 )
+texture = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 512.0
+margin_top = 24.0
+margin_right = 558.0
+margin_bottom = 98.0
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer2D2" parent="." instance=ExtResource( 4 )]
+autoplay = false
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 56.8464, 0.0546112 )
+shape = SubResource( 3 )
+
+[node name="Node2D" parent="." instance=ExtResource( 3 )]
